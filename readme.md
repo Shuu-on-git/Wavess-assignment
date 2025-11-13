@@ -4,64 +4,63 @@ This repository contains the code and results for a two-part technical prototype
 
 ---
 
-## 🚀 Task 1: LinkedIn Post & Audience Analysis
+## 🚀 How to View the Dashboard
 
-This prototype analyzes the performance and audience of a specific LinkedIn post to determine audience relevance against a defined Ideal Customer Profile (ICP).
-
-### Features:
-- **Post Analysis:** Calculates sentiment, engagement metrics, and key text features.
-- **Audience Analysis:** Ingests data from post reactions, comments, and reshares.
-- **ICP Scoring:** Ranks the audience based on a relevance score derived from keywords in their professional headlines (e.g., roles, seniority).
-- **Interactive Dashboard:** Allows filtering and exploring the ranked audience list.
-
----
-
-## 🧠 Task 2: GTM Intelligence Platform
-
-This prototype acts as an automated Go-To-Market research agent. It was tasked with researching **Stripe** to identify recent strategic shifts and provide actionable recommendations for a sales or marketing team.
-
-### Features:
-- **RAG Architecture:** Utilizes a Retrieval-Augmented Generation (RAG) pipeline to ensure accuracy and prevent AI hallucinations.
-- **Targeted Intelligence:** Runs focused searches for high-value GTM signals (funding, partnerships, key hires, product launches).
-- **Automated Synthesis:** The agent drafts a comprehensive GTM report, including an executive summary and actionable recommendations.
-- **Self-Verification (Conceptual):** The architecture includes a final verification step where an AI fact-checker validates the drafted report against the source material.
-
----
-
-## 🛠️ Tech Stack
-
-- **Data Collection:** Apify API, Tavily Search API
-- **AI & Orchestration:** OpenRouter (for access to various LLMs), LangChain (for RAG pipeline)
-- **Data Manipulation:** Pandas
-- **Dashboard:** Streamlit
-- **Core Language:** Python
-
----
-
-## 🏃‍♀️ How to Run the Dashboard
+The repository includes the pre-generated data files, so **no API keys are needed** to run and view the final dashboard.
 
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/Shuu-on-git/Wavess-assignment.git
-    cd your-project-name
+    cd Wavess-assignment
     ```
 
-2.  **Set up environment variables:**
+2.  **Install the required libraries:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Run the Streamlit app:**
+    ```bash
+    streamlit run dashboard.py
+    ```
+    The interactive dashboard will open in your web browser, showcasing the results of both tasks.
+
+---
+
+## 🛠️ Project Overview & Tech Stack
+
+### Task 1: LinkedIn Post & Audience Analysis
+This prototype analyzes the performance and audience of a specific LinkedIn post to determine audience relevance against a defined Ideal Customer Profile (ICP).
+
+- **Features:** Post sentiment analysis, audience engagement tracking, and ICP relevance scoring.
+
+### Task 2: GTM Intelligence Platform
+This prototype acts as an automated Go-To-Market research agent that researches **Stripe** to identify strategic shifts and provide actionable recommendations.
+
+- **Features:** A robust RAG (Retrieval-Augmented Generation) pipeline ensures accuracy and prevents AI hallucinations by grounding all claims in verifiable source data.
+
+### Tech Stack
+- **Data Collection:** Apify API, Tavily Search API
+- **AI & Orchestration:** OpenRouter (for LLMs), LangChain (for RAG)
+- **Data & Dashboard:** Pandas, Streamlit
+- **Core Language:** Python
+
+---
+
+## 👨‍💻 For Developers: How to Regenerate the Data (Optional)
+
+This section is for developers who wish to re-run the entire data collection and analysis pipeline. **This requires API keys.**
+
+1.  **Set up environment variables:**
     - Create a file named `.env` in the root of the project.
-    - Add your API keys to this file:
+    - Add your secret API keys to this file:
       ```
       OPENROUTER_API_KEY=your_key_here
       TAVILY_API_KEY=your_key_here
       APIFY_API_TOKEN=your_key_here
       ```
 
-3.  **Install the required libraries:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Run the Streamlit app:**
-    ```bash
-    streamlit run dashboard.py
-    ```
-    The dashboard will open in your web browser.
+2.  **Run the Jupyter Notebooks:**
+    - The data for Task 1 was generated using a Jupyter Notebook that calls the Apify API.
+    - The data for Task 2 was generated using a Jupyter Notebook that runs the RAG agent.
+    - Executing the cells in these notebooks sequentially will regenerate the `.csv` and `.md` files in the `data/` directory.
